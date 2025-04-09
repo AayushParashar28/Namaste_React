@@ -1,0 +1,31 @@
+{
+  "name": "namaste_react",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AayushParashar28/Namaste_React.git"
+  },
+  "keywords": [],
+  "author": "Aayush",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AayushParashar28/Namaste_React/issues"
+  },
+  "homepage": "https://github.com/AayushParashar28/Namaste_React#readme",
+  "devDependencies": {
+    "parcel": "^2.14.4"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "browserslist":[
+    "Last 2 versions"
+  ]
+}
