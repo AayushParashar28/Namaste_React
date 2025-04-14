@@ -23,11 +23,13 @@
     flex-wrap: wrap;
 }
 
-.res-card {
-    background-color: #f0f0f0;   
-    padding: 5px;
-    width: 200px;
-    height: 300px;
+.resCard {
+    background-color: #f0f0f0; 
+    margin: 4px;            
+    padding: 4px;
+    width: 250px;
+    height: 350px;
+    
 }
 
 .res-card:hover{
@@ -35,9 +37,9 @@
     border: 1px solid black ;
 }
 
-.res-logo {
-    width: 200px;
-    height: 130px;
+.rounded-lg {
+    width: 240px;
+    height: 100px;
 }
 
 .filter-btn {
@@ -59,4 +61,14 @@
 .login {
     padding: 0 15px;
     cursor: pointer;
+}
+
+.filter {
+    display: flex;
+}
+
+.name{
+    font: bold;
+    position:static;
+    text-align:left;
 }
