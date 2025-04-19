@@ -7,3 +7,7 @@ Functional Component -- New
 
 
 to run the app - npm start
+
+
+
+npx parcel index.js
