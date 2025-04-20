@@ -11,3 +11,5 @@ to run the app - npm start
 
 
 npx parcel index.js
+
+Optimising our app
