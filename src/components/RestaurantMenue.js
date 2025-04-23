@@ -24,9 +24,9 @@ const RestaurantMenue = () => {
   return resInfo === null ? (
     <Shimmer />
   ) : (
-    <div className="menue">
-      <h1>{name}</h1>
-      <p>
+    <div className="text-center">
+      <h1 className="font-bold my-6 text-2xl">{name}</h1>
+      <p className="font-bold text-lg">
         {cuisines.join(", ")} - {costForTwoMessage}{" "}
       </p>
       <h2>Menu</h2>
