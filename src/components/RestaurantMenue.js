@@ -1,43 +1,53 @@
-import { useState, useEffect } from "react";
-import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
+import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
-
+import RestaurantCategory from "./RestaurantCategory";
+import { useState, useEffect } from "react";
 
 const RestaurantMenue = () => {
   const { resId } = useParams();
+  const resInfo = useRestaurantMenu(resId);
+  const dummy = "Dummy Data"
 
-  const resInfo = useRestaurantMenu(resId)
+  const infoCard = resInfo?.cards?.find((card) => card?.card?.card?.info);
+  const info = infoCard?.card?.card?.info || {};
 
-  const info = resInfo?.cards?.find((card) => card?.card?.card?.info)?.card
-    ?.card?.info;
+  const { name, cuisines = [], costForTwoMessage } = info;
 
-  const { name, cuisines, costForTwoMessage } = info || {};
+  const regularCards =
+    resInfo?.cards?.find((card) => card?.groupedCard?.cardGroupMap?.REGULAR)
+      ?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
 
-  const menuCards = resInfo?.cards?.find(
-    (card) => card?.groupedCard?.cardGroupMap?.REGULAR
-  )?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+  console.log(regularCards);
 
-  const itemCards = menuCards?.find((c) => c?.card?.card?.itemCards)?.card?.card
-    ?.itemCards;
+  const menuCards = regularCards.filter(
+    (c) =>
+      c?.card?.card?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
 
-  return resInfo === null ? (
+  // Accordion index management
+  const [showIndex, setShowIndex] = useState(null);
+
+  return !resInfo ? (
     <Shimmer />
   ) : (
     <div className="text-center">
       <h1 className="font-bold my-6 text-2xl">{name}</h1>
       <p className="font-bold text-lg">
-        {cuisines.join(", ")} - {costForTwoMessage}{" "}
+        {cuisines.join(", ")} - {costForTwoMessage}
       </p>
-      <h2>Menu</h2>
-      <ul>
-        {itemCards.map((item) => (
-          <li key={item.card.info.id}>
-            {item.card.info.name} - ₹
-            {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
-          </li>
-        ))}
-      </ul>
+
+      {/* Render categories */}
+      {menuCards.map((category, index) => (
+         <RestaurantCategory
+         key={category?.card?.card.title}
+         data={category?.card?.card}
+         showItems={index === showIndex ? true : false}
+         setShowIndex={() => setShowIndex(index)}
+         dummy={dummy}
+       />
+      ))}
     </div>
   );
 };

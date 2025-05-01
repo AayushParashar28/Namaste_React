@@ -11,6 +11,7 @@ const [resInfo , setresInfo] = useState(null)
     const data = await fetch(MENU_API + resId);
     const json = await data.json();
     setresInfo(json.data);
+    console.log(json)
   };
 
   return resInfo;
