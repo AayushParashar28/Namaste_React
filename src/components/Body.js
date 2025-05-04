@@ -25,7 +25,7 @@ const Body = () => {
     const restaurants =
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants || [];
-    console.log(restaurants);
+    // console.log(restaurants);
 
     setlistofResturant(restaurants);
     setfilteredRestaurant(restaurants);
@@ -48,6 +48,7 @@ const Body = () => {
         <div className="Search m-4 p-4">
           <input
             type="text"
+            data-testid="searchInput"
             className="border border-solid border-black"
             value={searchText}
             onChange={(e) => {
